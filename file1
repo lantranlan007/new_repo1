@@ -1,4 +1,6 @@
-		aclEntries = aclView.getAcl();
+UserPrincipal owner = aclView.getOwner();
+
+aclEntries = aclView.getAcl();
 		 aclEntries.clear();
 		 AclEntry entry = AclEntry.newBuilder()
 			      .setType(AclEntryType.ALLOW)
