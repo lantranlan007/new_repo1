@@ -5,3 +5,49 @@ I am working on main local commit 3
 
 commit #2
 add more
+
+package aaa;
+
+import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.AclEntry;
+import java.nio.file.attribute.AclEntryPermission;
+import java.nio.file.attribute.AclEntryType;
+import java.nio.file.attribute.AclFileAttributeView;
+import java.nio.file.attribute.UserPrincipal;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Set;
+
+public class Main2 {
+  public static void main(String[] args) {
+    Path path = Paths.get("C:\\Users\\lantr\\OneDrive\\Desktop", "test6");
+
+    AclFileAttributeView aclView = Files.getFileAttributeView(path, AclFileAttributeView.class);
+    if (aclView == null) {
+      System.out.println("ACL view is not supported.");
+      return;
+    }
+
+      List<AclEntry> aclEntries;
+	try {
+		aclEntries = aclView.getAcl();
+		 aclEntries.clear();
+	      //aclEntries.add(newEntry);
+
+	      // Update the ACL entries
+	      aclView.setAcl(aclEntries);
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+     
+
+      System.out.println("ACL entry added for yourName successfully");
+      System.out.println("llll"+Files.isWritable(path));
+   
+  }
+}
