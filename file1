@@ -1,3 +1,18 @@
+		aclEntries = aclView.getAcl();
+		 aclEntries.clear();
+		 AclEntry entry = AclEntry.newBuilder()
+			      .setType(AclEntryType.ALLOW)
+			      .setPrincipal(owner)
+			      .setPermissions(AclEntryPermission.READ_DATA,
+			          AclEntryPermission.APPEND_DATA, AclEntryPermission.READ_NAMED_ATTRS,
+			          AclEntryPermission.WRITE_NAMED_ATTRS, AclEntryPermission.EXECUTE,
+			          AclEntryPermission.READ_ATTRIBUTES, AclEntryPermission.WRITE_ATTRIBUTES,
+			          AclEntryPermission.DELETE, AclEntryPermission.READ_ACL, AclEntryPermission.SYNCHRONIZE)
+			      .build();
+		 
+		 aclEntries.add(entry);
+	      aclView.setAcl(aclEntries);
+
 This is main branch
 I am working on main local
 I am working on main local commit 2
@@ -24,6 +39,7 @@ import java.util.Set;
 
 public class Main2 {
   public static void main(String[] args) {
+  
     Path path = Paths.get("C:\\Users\\lantr\\OneDrive\\Desktop", "test6");
 
     AclFileAttributeView aclView = Files.getFileAttributeView(path, AclFileAttributeView.class);
